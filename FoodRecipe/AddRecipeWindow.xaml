@@ -1,0 +1,41 @@
+﻿<Window x:Class="FoodRecipe.AddRecipeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FoodRecipe"
+        mc:Ignorable="d"
+        Title="AddRecipeWindow" Height="450" Width="800">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" VerticalAlignment="Center" Width="100">
+            <Button Click="newClick">add</Button>
+        </StackPanel>
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel Name="newlist">
+                <StackPanel.Resources>
+                    <ControlTemplate x:Key="addStepForm">
+                        <Grid Margin="0 0 0 5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <TextBox TextWrapping="Wrap" Height="50" Width="350" VerticalScrollBarVisibility="auto"></TextBox>
+                            </Grid>
+                        </Grid>
+                    </ControlTemplate>
+                </StackPanel.Resources>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
