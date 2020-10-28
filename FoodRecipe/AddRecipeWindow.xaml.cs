@@ -30,20 +30,36 @@ namespace FoodRecipe
             public event PropertyChangedEventHandler PropertyChanged;
         }
 
-        
+        class StepDao
+        {
+            public static BindingList<Step> GetAll()
+            {
+                var list = new BindingList<Step>()
+                {
+                    new Step(){ Order = 1, ImagePath="images/Splash/0.jpg", Content = "abc"},
+                };
+                return list;
+            }
+        }
 
         public AddRecipeWindow()
         {
             InitializeComponent();
         }
 
-   
-        private void newClick(object sender, RoutedEventArgs e)
-        {
-            var a = new ListBoxItem();
-            a.Template = newlist.Resources["addStepForm"] as ControlTemplate;
-            newlist.Children.Add(a);
-        }
-    }
 
+        BindingList<Step> _list;
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            _list = StepDao.GetAll();
+            newlist.ItemsSource = _list;
+        }
+
+        private void abc(object sender, RoutedEventArgs e)
+        {
+            Step a = new Step() { Order = _list[_list.Count-1].Order+1};
+            _list.Add(a);
+        }
+
+    }
 }

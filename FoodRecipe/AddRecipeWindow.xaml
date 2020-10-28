@@ -5,37 +5,55 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FoodRecipe"
         mc:Ignorable="d"
-        Title="AddRecipeWindow" Height="450" Width="800">
+        Title="AddRecipeWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0" VerticalAlignment="Center" Width="100">
-            <Button Click="newClick">add</Button>
+            <Button Click="abc">add</Button>
         </StackPanel>
-        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
-            <StackPanel Name="newlist">
-                <StackPanel.Resources>
-                    <ControlTemplate x:Key="addStepForm">
-                        <Grid Margin="0 0 0 5">
-                            <Grid.RowDefinitions>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <Grid Grid.Row="0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                            </Grid>
-                            <Grid Grid.Row="1">
-                                <TextBox TextWrapping="Wrap" Height="50" Width="350" VerticalScrollBarVisibility="auto"></TextBox>
-                            </Grid>
+        <ListBox Name="newlist" Grid.Column="1">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="0 0 0 5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <Label>
+                                    <Label.Content>
+                                        <DockPanel LastChildFill="True">
+                                            <TextBlock DockPanel.Dock="Left">Bước</TextBlock>
+                                            <TextBlock Text="{Binding Order}"/>
+                                        </DockPanel>
+                                    </Label.Content>
+                                </Label>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1">
+                                <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                                    <TextBox Width="100" Margin="0 0 30 0" Text="{Binding ImagePath}"></TextBox>
+                                    <Button >Add</Button>
+                                </StackPanel>
+                                <Image Width="50" Height="50" Source="{Binding ImagePath}" Stretch="UniformToFill"/>
+                            </StackPanel>
                         </Grid>
-                    </ControlTemplate>
-                </StackPanel.Resources>
-            </StackPanel>
-        </ScrollViewer>
+                        <Grid Grid.Row="1">
+                            <StackPanel>
+                                <TextBlock Margin="0 0 6 0">Mô tả</TextBlock>
+                                <TextBox Text="{Binding Content}" AcceptsReturn="True" TextWrapping="Wrap" Height="50" Width="350" VerticalScrollBarVisibility="auto"></TextBox>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>
